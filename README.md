@@ -1,84 +1,125 @@
-# demoreferobot - chat bot
-It is repository for chat bot: [@demoreferobot](https://t.me/demoreferobot)
+# YEY Rewards Bot 🤖🎁
 
-## What it is?
-This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
+> A Telegram bot for Refer & Earn — built with **Bots.Business**, supporting **monetary** and **non-monetary** rewards, a powerful admin panel, and anti-abuse systems.
 
-[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
+---
 
-A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
+## 🚀 Features
 
-## Create your own bot for Telegram from this Git repo
+### 🔓 Non-Monetary Rewards
+- 🎬 Unlock premium content (e.g. videos, links) by referring users
+- 🔐 Rewards are **non-shareable** with auto-delete protection
+- 🔁 Admin can control:
+  - Required referral count
+  - Reward content (link)
+  - Deletion time
 
-How to create bot?
-1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
-2. Create bot in App and add Secret Token
-3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
-4. Do import for this git repo
+### 💰 Monetary Rewards
+- 💳 Users set their payout account via `/wallet` or `/setwallet`
+- 💸 Withdraw requests via `/withdraw` (notifies admin instantly)
+- 📊 Real-time balance tracking with `/balance`
 
-Now you can talk with yours new Telegram Bot
+### 🎁 Bonuses & Engagement
+- 📅 `/bonus` - Claim daily bonus once every 24 hours
+- 👥 `/checkrefs` - View personal referral count
+- 🧾 `/menu` - Access referral links, rewards & balance
+- 📈 `/stats` - Check total users, stats, etc.
 
-See [more](https://help.bots.business/getting-started)
+### 🧰 Support & Error Management
+- ⚠️ All bot errors are auto-forwarded to an **Error Tab**
+- 🛠 `/report` - Users can report issues to the admin
 
-## Commands - in commands folder
-File name - it is command name (Bot it can be rewritten in command description)
+---
 
-Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
+## 👑 Admin Panel
 
-### Command description
-It is file header:
+Admins can access powerful tools:
 
-    /*CMD
-      command: /test
-      help: this is help for ccommand
-      need_reply: [ true or false here ]
-      auto_retry_time: [ time in sec ]
-      answer: it is example answer for /test command
-      keyboard: button1, button2
-      aliases: /test2, /test3
-    CMD*/
+- 👤 Ban / Unban users
+- 📢 Broadcast messages to all users
+- 🧾 Change user YEY balance (add/remove)
+- ✉️ Contact users personally
+- 🎁 Update daily bonus or referral bonus
+- 💰 Set minimum withdrawal amount
+- 🔎 Check any user's balance
+- 🧑‍💼 Add / Remove other admins
+- 🧬 Clone bot configuration
 
-See [more](https://help.bots.business/commands)
+---
 
-### Command body
-It is command code in JavaScript.
-Use Bot Java Script for logic in command.
+## ⚙️ Tech Stack
 
-For example:
-> Bot.sendMessage(2+2);
+- 🧠 [Bots.Business JavaScript (BJS)](https://help.bots.business)
+- 📦 `ResourcesLib` for coin management
+- 🔄 Fully synchronous logic
+- 🔒 Anti-abuse cooldowns and protected links
+- 📲 Admin notifications via Telegram API
 
-See [more](https://help.bots.business/scenarios-and-bjs)
+---
 
+Absolutely! Here's your updated `## 📌 How It Works` section for the `README.md`, now including **all the commands** you mentioned earlier (with proper descriptions and user/admin roles clarified):
 
-## Libraries - in libs folder
-You can store common code in the libs folder. File name - it is library name.
+---
 
-For example code in myLib.js:
+## 📌 How It Works
 
-    function hello(){ Bot.sendMessage("Hello from lib!") }
-    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
+| Command         | Description                                                   |
+|-----------------|---------------------------------------------------------------|
+| `/start`        | Launch the bot                                                |
+| `/menu`         | Access referral link, rewards, and referral count             |
+| `/bonus`        | Claim your daily bonus                                        |
+| `/checkrefs`    | Check how many users you've referred                          |
+| `/balance`      | View your current YEY coin balance                            |
+| `/wallet`       | View your saved payout wallet                                 |
+| `/setwallet`    | Set or update your payout UPI ID                              |
+| `/withdraw`     | Request a withdrawal — admin is alerted automatically         |
+| `/report`       | Contact the admin or report an issue                          |
+| `/stats`        | View overall bot usage statistics                             |
+| `/getvideo`     | [Admin] Set referral requirement and reward content link      |
+| `/admin`        | [Admin] Access admin panel features                           |
+| `/broadcast`    | [Admin] Send message to all users                             |
 
-    publish({
-      sayHello: hello,
-      sayGoodbyeTo: goodbye
-    })
+---
 
-then you can run in any bot's command:
+## 🧠 Why This Bot Can Win
 
-    Libs.myLib.hello()
-    Libs.myLib.sayGoodbyeTo("Alice")
+- ⚡ **Highly interactive**: Both casual and premium reward options keep users engaged
+- 🛡️ **Secure**: Non-shareable rewards prevent abuse
+- 📈 **Scalable & Modular**: Admin can control everything without editing code
+- 🤖 **Fully Telegram-native**: Fast, seamless experience
+- 🔥 **Clean UX + DevX**: Users and admins both enjoy clear flows and controls
 
-See [more](https://help.bots.business/git/library)
+---
 
-## Other bots example
-See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+## 🛠 How to Setup
 
+1. Clone the repo or copy code into [Bots.Business](https://bots.business)
+2. Set required properties:
+   ```js
+   Bot.setProperty("AdminID", YOUR_TELEGRAM_ID, "integer");
+   Bot.setProperty("Bonus", "10", "string");
+   Bot.setProperty("MinW", 100, "integer");
+   ```
+3. Use provided commands to configure other behavior (`/getvideo`, `/setwallet`, etc.)
 
-## Other help
-[Help.bots.business](https://help.bots.business)
+---
 
-## API
-See [API](https://api.bots.business/docs#/docs/summary)
+## 🤝 Contribution
 
+This bot was built with the intention to help **new creators** launch reward-based Telegram systems without complex backend coding.  
+Want to help? Fork, improve, and create a pull request!
 
-![](https://bots.business/images/web-logo.png)
+---
+
+## 🏆 License
+
+MIT License — free to use, modify, and share with credit.  
+Credit: [Dhyey Patel](https://t.me/dhyeye)
+
+---
+
+## 💬 Connect
+
+Questions or suggestions? [Contact the creator](https://t.me/dhyeye) on Telegram.
+
+---
