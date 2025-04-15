@@ -44,7 +44,7 @@ Admins can access powerful tools:
 - 🔎 Check any user's balance
 - 🧑‍💼 Add / Remove other admins
 - 🧬 Clone bot configuration
-
+- 🏧 List to pending withdrawal request
 ---
 
 ## ⚙️ Tech Stack
